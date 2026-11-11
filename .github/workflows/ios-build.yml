@@ -1,0 +1,30 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Manuel tetikleme için
+
+jobs:
+  build:
+    runs-on: macos-15 # Xcode 27'nin bulunduğu runner (güncel sürüme göre değişebilir)
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Xcode Sürümünü Seç
+      run: sudo xcode-select -s /Applications/Xcode.app
+
+    - name: Bağımlılıkları Yükle (opsiyonel)
+      run: |
+        # Eğer CocoaPods veya SPM kullanıyorsanız burada ilgili komutları çalıştırın.
+        # Örneğin: pod install
+
+    - name: Build
+      run: |
+        xcodebuild clean build \
+          -project MainApp.xcodeproj \
+          -scheme MainApp \
+          -destination 'generic/platform=iOS' \
+          -configuration Release \
+          CODE_SIGNING_ALLOWED=NO
