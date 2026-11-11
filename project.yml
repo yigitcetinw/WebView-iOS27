@@ -1,0 +1,16 @@
+name: WebView-iOS27
+options:
+  bundleIdPrefix: com.yigitcetinw
+  deploymentTarget:
+    iOS: "16.0" # Uygulamanın çalışacağı minimum iOS sürümü
+targets:
+  WebView-iOS27:
+    type: application
+    platform: iOS
+    sources: 
+      - ContentView.swift
+      - MainApp.swift
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES # Info.plist dosyasını otomatik oluşturur
+        PRODUCT_BUNDLE_IDENTIFIER: com.yigitcetinw.WebView-iOS27
